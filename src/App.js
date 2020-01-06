@@ -35,7 +35,7 @@ class App extends Component {
     this.setState({ error: false });
 
     const apiKey = process.env.REACT_APP_API_KEY;
-    let url = `http://api.openweathermap.org/data/2.5/forecast?q=${this.state.city}&units=metric&appid=${apiKey}`
+    let url = `https://api.openweathermap.org/data/2.5/forecast?q=${this.state.city}&units=metric&appid=${apiKey}`
 
     fetch(url)
       .then((result) => {
@@ -60,7 +60,7 @@ class App extends Component {
 componentDidMount() {
   let city = "London";
   const apiKey = process.env.REACT_APP_API_KEY;
-  let url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`
+  let url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`
 
 fetch(url)
   .then(result => result.json())
