@@ -74,6 +74,10 @@ button:hover {
 button:focus {
   outline: none;
 }
+.search {
+    font-family: 'Quicksand', sans-serif;
+    font-style: normal;
+}
 .container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);

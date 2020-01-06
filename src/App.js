@@ -84,7 +84,7 @@ fetch(url)
            type="text"
            onChange={this.changeHandler}
            placeholder="Change city..."/>
-         <button type="submit"><i className="fa fa-search fa-2x"></i></button>
+          <button type="submit"><i className="search">Search</i></button>
         </form>
 
         <div className="container">
