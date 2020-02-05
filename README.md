@@ -6,7 +6,7 @@ A weather app using React and the Open Weather API.
 ## Demo
 
 The app is available here: <br />
-[https://afternoon-shore-64778.herokuapp.com//](https://afternoon-shore-64778.herokuapp.com/)
+[http://seemly-toes.surge.sh/](http://seemly-toes.surge.sh/)
 
 ## Tech used
 - React
