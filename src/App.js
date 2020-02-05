@@ -10,6 +10,7 @@ class App extends Component {
       cardClicked: false,
       id: "hey",
       city: "London",
+      citySaved: "",
       error: false,
     }
   }
@@ -26,15 +27,15 @@ class App extends Component {
   }
   changeHandler = (e) => {
     this.setState({
-      city: e.target.value,
+      citySaved: e.target.value,
     })
   }
   search = (e) => {
     e.preventDefault();
-    this.setState({ error: false });
+    this.setState({ error: false  });
 
     const apiKey = process.env.REACT_APP_API_KEY;
-    let url = `https://api.openweathermap.org/data/2.5/forecast?q=${this.state.city}&units=metric&appid=${apiKey}`
+    let url = `https://api.openweathermap.org/data/2.5/forecast?q=${this.state.citySaved}&units=metric&appid=${apiKey}`
 
     fetch(url)
       .then((result) => {
@@ -46,7 +47,8 @@ class App extends Component {
         })
       .then((result) => {
             this.setState({
-              data: result.list
+              data: result.list,
+              city: this.state.citySaved
             })
       })
       .catch((error) => {
@@ -137,12 +139,14 @@ fetch(url)
               case "12":
               month = "Dec"
               break;
+              default:
+              month = "Jan"
             }
             let sky = current.weather[0].main;
             let picSky;
             switch (sky) {
               case "Clear":
-                if (hour == "06" || hour == "09" || hour == "12" || hour == "15" || hour == "18" ) {
+                if (hour === "06" || hour === "09" || hour === "12" || hour === "15" || hour === "18" ) {
                   picSky = "https://dl.dropboxusercontent.com/s/aqvx44det3n7cur/day.svg?dl=0";
                 } else {
                   picSky = "https://dl.dropboxusercontent.com/s/7fj2ad8nqu62m46/night.svg?dl=0"
@@ -204,7 +208,7 @@ fetch(url)
             let picSky;
             switch (sky) {
               case "Clear":
-                if (hour == "06" || hour == "09" || hour == "12" || hour == "15" || hour == "18" ) {
+                if (hour === "06" || hour === "09" || hour === "12" || hour === "15" || hour === "18" ) {
                   picSky = "https://dl.dropboxusercontent.com/s/aqvx44det3n7cur/day.svg?dl=0";
                 } else {
                   picSky = "https://dl.dropboxusercontent.com/s/7fj2ad8nqu62m46/night.svg?dl=0"
@@ -239,7 +243,6 @@ fetch(url)
         }
   )
           :
-
           <div></div>
   }
   </div>
@@ -251,7 +254,7 @@ fetch(url)
 
 const Card = props =>  (
     <div
-      className={props.id == props.day ? "cardClicked" : "card"}
+      className={props.id === props.day ? "cardClicked" : "card"}
       onClick={props.clicked}
       value={props.value}>
       <h3 value={props.value}>{props.day} {props.month}</h3>
